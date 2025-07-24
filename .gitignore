@@ -1,1 +1,8 @@
 spatial_model/
+MSC_THESIS/spatial_model/
+MSC_THESIS/outputs/
+outputs/
+MSC_THESIS/all_models/
+all_models/
+MSC_THESIS/.cache/
+.cache/

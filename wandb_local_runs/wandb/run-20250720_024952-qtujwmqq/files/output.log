@@ -1,0 +1,391 @@
+  0%|          | 0/131511 [00:00<?, ?it/s][WARNING|logging.py:328] 2025-07-20 02:49:54,020 >> `loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+  8%|▊         | 10000/131511 [09:55<1:59:47, 16.91it/s][INFO|trainer.py:3993] 2025-07-20 02:59:49,343 >> Saving model checkpoint to generalist_model/checkpoint-10000
+{'loss': 4.0013, 'grad_norm': 1.857776165008545, 'learning_rate': 4.981028202964011e-05, 'epoch': 0.0}
+{'loss': 3.8141, 'grad_norm': 1.619327425956726, 'learning_rate': 4.962018386294683e-05, 'epoch': 0.01}
+{'loss': 3.7638, 'grad_norm': 1.7820364236831665, 'learning_rate': 4.9430085696253546e-05, 'epoch': 0.01}
+{'loss': 3.7396, 'grad_norm': 1.8064652681350708, 'learning_rate': 4.923998752956027e-05, 'epoch': 0.02}
+{'loss': 3.7106, 'grad_norm': 1.7102490663528442, 'learning_rate': 4.9049889362866986e-05, 'epoch': 0.02}
+{'loss': 3.692, 'grad_norm': 1.7725887298583984, 'learning_rate': 4.88597911961737e-05, 'epoch': 0.02}
+{'loss': 3.6831, 'grad_norm': 1.6911190748214722, 'learning_rate': 4.8669693029480426e-05, 'epoch': 0.03}
+{'loss': 3.6644, 'grad_norm': 1.940002202987671, 'learning_rate': 4.847959486278715e-05, 'epoch': 0.03}
+{'loss': 3.6604, 'grad_norm': 2.044595241546631, 'learning_rate': 4.8289496696093866e-05, 'epoch': 0.03}
+{'loss': 3.6516, 'grad_norm': 1.8547409772872925, 'learning_rate': 4.809939852940058e-05, 'epoch': 0.04}
+{'loss': 3.6452, 'grad_norm': 1.8421653509140015, 'learning_rate': 4.7909300362707306e-05, 'epoch': 0.04}
+{'loss': 3.6412, 'grad_norm': 1.840811848640442, 'learning_rate': 4.771920219601402e-05, 'epoch': 0.05}
+{'loss': 3.636, 'grad_norm': 1.7104734182357788, 'learning_rate': 4.752910402932074e-05, 'epoch': 0.05}
+{'loss': 3.6289, 'grad_norm': 1.7879239320755005, 'learning_rate': 4.733900586262746e-05, 'epoch': 0.05}
+{'loss': 3.6233, 'grad_norm': 1.759365439414978, 'learning_rate': 4.714890769593418e-05, 'epoch': 0.06}
+{'loss': 3.6257, 'grad_norm': 1.8133584260940552, 'learning_rate': 4.69588095292409e-05, 'epoch': 0.06}
+{'loss': 3.6173, 'grad_norm': 1.7220114469528198, 'learning_rate': 4.6768711362547627e-05, 'epoch': 0.06}
+{'loss': 3.6174, 'grad_norm': 1.7461696863174438, 'learning_rate': 4.657861319585434e-05, 'epoch': 0.07}
+{'loss': 3.6148, 'grad_norm': 1.8967920541763306, 'learning_rate': 4.638851502916106e-05, 'epoch': 0.07}
+{'loss': 3.6119, 'grad_norm': 1.821388840675354, 'learning_rate': 4.619841686246778e-05, 'epoch': 0.08}
+[INFO|configuration_utils.py:440] 2025-07-20 02:59:49,359 >> Configuration saved in generalist_model/checkpoint-10000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 02:59:49,361 >> Configuration saved in generalist_model/checkpoint-10000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 02:59:52,533 >> Model weights saved in generalist_model/checkpoint-10000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 02:59:52,551 >> tokenizer config file saved in generalist_model/checkpoint-10000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 02:59:52,552 >> Special tokens file saved in generalist_model/checkpoint-10000/special_tokens_map.json
+[WARNING|logging.py:328] 2025-07-20 03:00:00,455 >> `torch.nn.functional.scaled_dot_product_attention` does not support `output_attentions=True`. Falling back to eager attention. This warning can be removed using the argument `attn_implementation="eager"` when loading the model.
+ 15%|█▌        | 20000/131511 [20:34<2:20:23, 13.24it/s][INFO|trainer.py:3993] 2025-07-20 03:10:28,620 >> Saving model checkpoint to generalist_model/checkpoint-20000
+{'loss': 3.6099, 'grad_norm': 1.5940184593200684, 'learning_rate': 4.60083186957745e-05, 'epoch': 0.08}
+{'loss': 3.6083, 'grad_norm': 1.7435005903244019, 'learning_rate': 4.581822052908122e-05, 'epoch': 0.08}
+{'loss': 3.6006, 'grad_norm': 1.7221412658691406, 'learning_rate': 4.562812236238794e-05, 'epoch': 0.09}
+{'loss': 3.6033, 'grad_norm': 1.6180455684661865, 'learning_rate': 4.543802419569466e-05, 'epoch': 0.09}
+{'loss': 3.6001, 'grad_norm': 1.562421441078186, 'learning_rate': 4.524792602900138e-05, 'epoch': 0.1}
+{'loss': 3.5967, 'grad_norm': 1.7755708694458008, 'learning_rate': 4.50578278623081e-05, 'epoch': 0.1}
+{'loss': 3.6, 'grad_norm': 1.709293007850647, 'learning_rate': 4.486772969561482e-05, 'epoch': 0.1}
+{'loss': 3.5962, 'grad_norm': 1.802002191543579, 'learning_rate': 4.467763152892154e-05, 'epoch': 0.11}
+{'loss': 3.5162, 'grad_norm': 2.1274030208587646, 'learning_rate': 4.4487533362228254e-05, 'epoch': 0.11}
+{'loss': 3.3969, 'grad_norm': 3.329624652862549, 'learning_rate': 4.429743519553498e-05, 'epoch': 0.11}
+{'loss': 3.288, 'grad_norm': 5.40839147567749, 'learning_rate': 4.4107337028841694e-05, 'epoch': 0.12}
+{'loss': 3.1765, 'grad_norm': 4.147830486297607, 'learning_rate': 4.391723886214841e-05, 'epoch': 0.12}
+{'loss': 3.0411, 'grad_norm': 5.645624160766602, 'learning_rate': 4.372714069545514e-05, 'epoch': 0.13}
+{'loss': 2.8732, 'grad_norm': 6.912827491760254, 'learning_rate': 4.353704252876186e-05, 'epoch': 0.13}
+{'loss': 2.7342, 'grad_norm': 4.166882514953613, 'learning_rate': 4.3346944362068574e-05, 'epoch': 0.13}
+{'loss': 2.595, 'grad_norm': 10.509638786315918, 'learning_rate': 4.31568461953753e-05, 'epoch': 0.14}
+{'loss': 2.4644, 'grad_norm': 3.8477466106414795, 'learning_rate': 4.2966748028682014e-05, 'epoch': 0.14}
+{'loss': 2.3122, 'grad_norm': 7.174417972564697, 'learning_rate': 4.277664986198873e-05, 'epoch': 0.14}
+{'loss': 2.1865, 'grad_norm': 5.846432209014893, 'learning_rate': 4.2586551695295454e-05, 'epoch': 0.15}
+{'loss': 2.072, 'grad_norm': 4.498145580291748, 'learning_rate': 4.239645352860217e-05, 'epoch': 0.15}
+[INFO|configuration_utils.py:440] 2025-07-20 03:10:28,681 >> Configuration saved in generalist_model/checkpoint-20000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 03:10:28,696 >> Configuration saved in generalist_model/checkpoint-20000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 03:10:32,303 >> Model weights saved in generalist_model/checkpoint-20000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 03:10:32,337 >> tokenizer config file saved in generalist_model/checkpoint-20000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 03:10:32,388 >> Special tokens file saved in generalist_model/checkpoint-20000/special_tokens_map.json
+ 23%|██▎       | 30000/131511 [31:32<1:40:05, 16.90it/s][INFO|trainer.py:3993] 2025-07-20 03:21:26,255 >> Saving model checkpoint to generalist_model/checkpoint-30000
+{'loss': 1.9739, 'grad_norm': 19.32057762145996, 'learning_rate': 4.220635536190889e-05, 'epoch': 0.16}
+{'loss': 1.8846, 'grad_norm': 6.176140785217285, 'learning_rate': 4.201625719521561e-05, 'epoch': 0.16}
+{'loss': 1.7997, 'grad_norm': 5.894723892211914, 'learning_rate': 4.1826159028522334e-05, 'epoch': 0.16}
+{'loss': 1.7386, 'grad_norm': 7.296065330505371, 'learning_rate': 4.163606086182905e-05, 'epoch': 0.17}
+{'loss': 1.6843, 'grad_norm': 7.761021614074707, 'learning_rate': 4.144596269513577e-05, 'epoch': 0.17}
+{'loss': 1.6395, 'grad_norm': 6.827154636383057, 'learning_rate': 4.125586452844249e-05, 'epoch': 0.17}
+{'loss': 1.6008, 'grad_norm': 14.548494338989258, 'learning_rate': 4.106576636174921e-05, 'epoch': 0.18}
+{'loss': 1.546, 'grad_norm': 8.280316352844238, 'learning_rate': 4.0875668195055924e-05, 'epoch': 0.18}
+{'loss': 1.5193, 'grad_norm': 11.948235511779785, 'learning_rate': 4.068557002836265e-05, 'epoch': 0.19}
+{'loss': 1.5014, 'grad_norm': 3.6715569496154785, 'learning_rate': 4.049547186166937e-05, 'epoch': 0.19}
+{'loss': 1.4863, 'grad_norm': 11.654057502746582, 'learning_rate': 4.030537369497609e-05, 'epoch': 0.19}
+{'loss': 1.4739, 'grad_norm': 6.112255096435547, 'learning_rate': 4.011527552828281e-05, 'epoch': 0.2}
+{'loss': 1.4598, 'grad_norm': 5.125506401062012, 'learning_rate': 3.992517736158953e-05, 'epoch': 0.2}
+{'loss': 1.4395, 'grad_norm': 19.683589935302734, 'learning_rate': 3.9735079194896245e-05, 'epoch': 0.21}
+{'loss': 1.4307, 'grad_norm': 5.162509918212891, 'learning_rate': 3.954498102820297e-05, 'epoch': 0.21}
+{'loss': 1.4181, 'grad_norm': 7.717621803283691, 'learning_rate': 3.9354882861509685e-05, 'epoch': 0.21}
+{'loss': 1.4053, 'grad_norm': 19.309871673583984, 'learning_rate': 3.91647846948164e-05, 'epoch': 0.22}
+{'loss': 1.4112, 'grad_norm': 2.5979206562042236, 'learning_rate': 3.8974686528123125e-05, 'epoch': 0.22}
+{'loss': 1.3928, 'grad_norm': 11.263726234436035, 'learning_rate': 3.878458836142985e-05, 'epoch': 0.22}
+{'loss': 1.3973, 'grad_norm': 2.922598123550415, 'learning_rate': 3.8594490194736565e-05, 'epoch': 0.23}
+[INFO|configuration_utils.py:440] 2025-07-20 03:21:26,259 >> Configuration saved in generalist_model/checkpoint-30000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 03:21:26,286 >> Configuration saved in generalist_model/checkpoint-30000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 03:21:29,522 >> Model weights saved in generalist_model/checkpoint-30000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 03:21:29,527 >> tokenizer config file saved in generalist_model/checkpoint-30000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 03:21:29,529 >> Special tokens file saved in generalist_model/checkpoint-30000/special_tokens_map.json
+ 30%|███       | 40000/131511 [41:58<1:30:01, 16.94it/s][INFO|trainer.py:3993] 2025-07-20 03:31:52,458 >> Saving model checkpoint to generalist_model/checkpoint-40000
+{'loss': 1.3871, 'grad_norm': 12.44033145904541, 'learning_rate': 3.840439202804328e-05, 'epoch': 0.23}
+{'loss': 1.3762, 'grad_norm': 9.846678733825684, 'learning_rate': 3.8214293861350005e-05, 'epoch': 0.24}
+{'loss': 1.3673, 'grad_norm': 3.4507009983062744, 'learning_rate': 3.802419569465672e-05, 'epoch': 0.24}
+{'loss': 1.3651, 'grad_norm': 5.125868320465088, 'learning_rate': 3.783409752796344e-05, 'epoch': 0.24}
+{'loss': 1.3539, 'grad_norm': 5.3213300704956055, 'learning_rate': 3.764399936127016e-05, 'epoch': 0.25}
+{'loss': 1.3543, 'grad_norm': 11.068658828735352, 'learning_rate': 3.745390119457688e-05, 'epoch': 0.25}
+{'loss': 1.3528, 'grad_norm': 3.383232355117798, 'learning_rate': 3.7263803027883595e-05, 'epoch': 0.25}
+{'loss': 1.3396, 'grad_norm': 3.370481252670288, 'learning_rate': 3.7073704861190325e-05, 'epoch': 0.26}
+{'loss': 1.3337, 'grad_norm': 5.315715789794922, 'learning_rate': 3.688360669449704e-05, 'epoch': 0.26}
+{'loss': 1.3318, 'grad_norm': 1.6509486436843872, 'learning_rate': 3.669350852780376e-05, 'epoch': 0.27}
+{'loss': 1.3385, 'grad_norm': 4.999639511108398, 'learning_rate': 3.650341036111048e-05, 'epoch': 0.27}
+{'loss': 1.3396, 'grad_norm': 10.555699348449707, 'learning_rate': 3.63133121944172e-05, 'epoch': 0.27}
+{'loss': 1.3314, 'grad_norm': 13.698209762573242, 'learning_rate': 3.6123214027723915e-05, 'epoch': 0.28}
+{'loss': 1.3296, 'grad_norm': 2.0437028408050537, 'learning_rate': 3.593311586103064e-05, 'epoch': 0.28}
+{'loss': 1.3173, 'grad_norm': 2.059567451477051, 'learning_rate': 3.5743017694337355e-05, 'epoch': 0.29}
+{'loss': 1.3194, 'grad_norm': 6.029306411743164, 'learning_rate': 3.555291952764408e-05, 'epoch': 0.29}
+{'loss': 1.3146, 'grad_norm': 6.498870372772217, 'learning_rate': 3.5362821360950795e-05, 'epoch': 0.29}
+{'loss': 1.3207, 'grad_norm': 1.175106167793274, 'learning_rate': 3.517272319425752e-05, 'epoch': 0.3}
+{'loss': 1.3085, 'grad_norm': 4.029250621795654, 'learning_rate': 3.4982625027564235e-05, 'epoch': 0.3}
+{'loss': 1.3183, 'grad_norm': 1.666397213935852, 'learning_rate': 3.479252686087095e-05, 'epoch': 0.3}
+[INFO|configuration_utils.py:440] 2025-07-20 03:31:53,936 >> Configuration saved in generalist_model/checkpoint-40000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 03:31:53,943 >> Configuration saved in generalist_model/checkpoint-40000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 03:31:57,219 >> Model weights saved in generalist_model/checkpoint-40000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 03:31:57,230 >> tokenizer config file saved in generalist_model/checkpoint-40000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 03:31:57,239 >> Special tokens file saved in generalist_model/checkpoint-40000/special_tokens_map.json
+ 38%|███▊      | 50000/131511 [52:27<1:23:38, 16.24it/s][INFO|trainer.py:3993] 2025-07-20 03:42:20,838 >> Saving model checkpoint to generalist_model/checkpoint-50000
+{'loss': 1.3157, 'grad_norm': 5.102369785308838, 'learning_rate': 3.4602428694177676e-05, 'epoch': 0.31}
+{'loss': 1.3037, 'grad_norm': 9.582712173461914, 'learning_rate': 3.441233052748439e-05, 'epoch': 0.31}
+{'loss': 1.3023, 'grad_norm': 5.65646505355835, 'learning_rate': 3.422223236079111e-05, 'epoch': 0.32}
+{'loss': 1.2951, 'grad_norm': 2.2522776126861572, 'learning_rate': 3.403213419409783e-05, 'epoch': 0.32}
+{'loss': 1.2954, 'grad_norm': 1.102921962738037, 'learning_rate': 3.3842036027404556e-05, 'epoch': 0.32}
+{'loss': 1.3029, 'grad_norm': 4.185466766357422, 'learning_rate': 3.365193786071127e-05, 'epoch': 0.33}
+{'loss': 1.3038, 'grad_norm': 7.684592247009277, 'learning_rate': 3.3461839694017996e-05, 'epoch': 0.33}
+{'loss': 1.2898, 'grad_norm': 9.73642635345459, 'learning_rate': 3.327174152732471e-05, 'epoch': 0.33}
+{'loss': 1.2866, 'grad_norm': 9.708168983459473, 'learning_rate': 3.308164336063143e-05, 'epoch': 0.34}
+{'loss': 1.2938, 'grad_norm': 2.175180673599243, 'learning_rate': 3.289154519393815e-05, 'epoch': 0.34}
+{'loss': 1.2831, 'grad_norm': 1.2621461153030396, 'learning_rate': 3.270144702724487e-05, 'epoch': 0.35}
+{'loss': 1.2894, 'grad_norm': 1.0181910991668701, 'learning_rate': 3.2511348860551586e-05, 'epoch': 0.35}
+{'loss': 1.2906, 'grad_norm': 1.415083885192871, 'learning_rate': 3.232125069385831e-05, 'epoch': 0.35}
+{'loss': 1.2877, 'grad_norm': 1.4289923906326294, 'learning_rate': 3.213115252716503e-05, 'epoch': 0.36}
+{'loss': 1.2827, 'grad_norm': 6.980085849761963, 'learning_rate': 3.194105436047175e-05, 'epoch': 0.36}
+{'loss': 1.2831, 'grad_norm': 1.6351990699768066, 'learning_rate': 3.1750956193778466e-05, 'epoch': 0.36}
+{'loss': 1.277, 'grad_norm': 1.1953619718551636, 'learning_rate': 3.156085802708519e-05, 'epoch': 0.37}
+{'loss': 1.2785, 'grad_norm': 1.2839266061782837, 'learning_rate': 3.1370759860391906e-05, 'epoch': 0.37}
+{'loss': 1.274, 'grad_norm': 1.827699899673462, 'learning_rate': 3.118066169369863e-05, 'epoch': 0.38}
+{'loss': 1.2806, 'grad_norm': 2.301985025405884, 'learning_rate': 3.0990563527005346e-05, 'epoch': 0.38}
+[INFO|configuration_utils.py:440] 2025-07-20 03:42:20,843 >> Configuration saved in generalist_model/checkpoint-50000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 03:42:20,846 >> Configuration saved in generalist_model/checkpoint-50000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 03:42:24,030 >> Model weights saved in generalist_model/checkpoint-50000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 03:42:24,034 >> tokenizer config file saved in generalist_model/checkpoint-50000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 03:42:24,047 >> Special tokens file saved in generalist_model/checkpoint-50000/special_tokens_map.json
+ 46%|████▌     | 60000/131511 [1:02:39<1:11:12, 16.74it/s][INFO|trainer.py:3993] 2025-07-20 03:52:33,779 >> Saving model checkpoint to generalist_model/checkpoint-60000
+{'loss': 1.2685, 'grad_norm': 1.691206455230713, 'learning_rate': 3.080046536031206e-05, 'epoch': 0.38}
+{'loss': 1.2879, 'grad_norm': 6.222972393035889, 'learning_rate': 3.0610367193618786e-05, 'epoch': 0.39}
+{'loss': 1.2721, 'grad_norm': 1.0730787515640259, 'learning_rate': 3.0420269026925506e-05, 'epoch': 0.39}
+{'loss': 1.2671, 'grad_norm': 6.096638202667236, 'learning_rate': 3.0230170860232226e-05, 'epoch': 0.4}
+{'loss': 1.2733, 'grad_norm': 1.334299087524414, 'learning_rate': 3.0040072693538946e-05, 'epoch': 0.4}
+{'loss': 1.2747, 'grad_norm': 25.927095413208008, 'learning_rate': 2.9849974526845663e-05, 'epoch': 0.4}
+{'loss': 1.2717, 'grad_norm': 1.0011446475982666, 'learning_rate': 2.9659876360152383e-05, 'epoch': 0.41}
+{'loss': 1.265, 'grad_norm': 1.3820462226867676, 'learning_rate': 2.9469778193459103e-05, 'epoch': 0.41}
+{'loss': 1.2691, 'grad_norm': 1.3066929578781128, 'learning_rate': 2.927968002676582e-05, 'epoch': 0.41}
+{'loss': 1.2673, 'grad_norm': 1.7267228364944458, 'learning_rate': 2.9089581860072547e-05, 'epoch': 0.42}
+{'loss': 1.2654, 'grad_norm': 1.2016595602035522, 'learning_rate': 2.8899483693379263e-05, 'epoch': 0.42}
+{'loss': 1.2638, 'grad_norm': 3.844189167022705, 'learning_rate': 2.8709385526685983e-05, 'epoch': 0.43}
+{'loss': 1.2612, 'grad_norm': 4.423879146575928, 'learning_rate': 2.8519287359992703e-05, 'epoch': 0.43}
+{'loss': 1.2556, 'grad_norm': 0.88039630651474, 'learning_rate': 2.832918919329942e-05, 'epoch': 0.43}
+{'loss': 1.2622, 'grad_norm': 0.8022147417068481, 'learning_rate': 2.813909102660614e-05, 'epoch': 0.44}
+{'loss': 1.2684, 'grad_norm': 0.7358605265617371, 'learning_rate': 2.794899285991286e-05, 'epoch': 0.44}
+{'loss': 1.2644, 'grad_norm': 1.552474856376648, 'learning_rate': 2.7758894693219577e-05, 'epoch': 0.44}
+{'loss': 1.2621, 'grad_norm': 0.704223096370697, 'learning_rate': 2.7568796526526297e-05, 'epoch': 0.45}
+{'loss': 1.257, 'grad_norm': 1.938011646270752, 'learning_rate': 2.737869835983302e-05, 'epoch': 0.45}
+{'loss': 1.2573, 'grad_norm': 2.1262502670288086, 'learning_rate': 2.718860019313974e-05, 'epoch': 0.46}
+[INFO|configuration_utils.py:440] 2025-07-20 03:52:33,783 >> Configuration saved in generalist_model/checkpoint-60000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 03:52:33,785 >> Configuration saved in generalist_model/checkpoint-60000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 03:52:36,943 >> Model weights saved in generalist_model/checkpoint-60000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 03:52:36,946 >> tokenizer config file saved in generalist_model/checkpoint-60000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 03:52:36,948 >> Special tokens file saved in generalist_model/checkpoint-60000/special_tokens_map.json
+ 53%|█████▎    | 70000/131511 [1:12:48<1:00:28, 16.95it/s][INFO|trainer.py:3993] 2025-07-20 04:02:42,270 >> Saving model checkpoint to generalist_model/checkpoint-70000
+{'loss': 1.2574, 'grad_norm': 1.4693536758422852, 'learning_rate': 2.699850202644646e-05, 'epoch': 0.46}
+{'loss': 1.2559, 'grad_norm': 11.202092170715332, 'learning_rate': 2.6808403859753177e-05, 'epoch': 0.46}
+{'loss': 1.2619, 'grad_norm': 3.514493227005005, 'learning_rate': 2.6618305693059897e-05, 'epoch': 0.47}
+{'loss': 1.2599, 'grad_norm': 0.9340313673019409, 'learning_rate': 2.6428207526366617e-05, 'epoch': 0.47}
+{'loss': 1.2553, 'grad_norm': 1.104230523109436, 'learning_rate': 2.6238109359673334e-05, 'epoch': 0.48}
+{'loss': 1.2572, 'grad_norm': 1.9710774421691895, 'learning_rate': 2.6048011192980054e-05, 'epoch': 0.48}
+{'loss': 1.2567, 'grad_norm': 0.8872635364532471, 'learning_rate': 2.5857913026286774e-05, 'epoch': 0.48}
+{'loss': 1.251, 'grad_norm': 4.330101490020752, 'learning_rate': 2.5667814859593497e-05, 'epoch': 0.49}
+{'loss': 1.2551, 'grad_norm': 1.3165556192398071, 'learning_rate': 2.5477716692900217e-05, 'epoch': 0.49}
+{'loss': 1.2527, 'grad_norm': 0.9663867950439453, 'learning_rate': 2.5287618526206934e-05, 'epoch': 0.49}
+{'loss': 1.2589, 'grad_norm': 1.3836029767990112, 'learning_rate': 2.5097520359513654e-05, 'epoch': 0.5}
+{'loss': 1.259, 'grad_norm': 0.6704297661781311, 'learning_rate': 2.4907422192820374e-05, 'epoch': 0.5}
+{'loss': 1.2542, 'grad_norm': 1.3129864931106567, 'learning_rate': 2.471732402612709e-05, 'epoch': 0.51}
+{'loss': 1.2562, 'grad_norm': 1.628715991973877, 'learning_rate': 2.4527225859433814e-05, 'epoch': 0.51}
+{'loss': 1.2516, 'grad_norm': 1.7384003400802612, 'learning_rate': 2.4337127692740534e-05, 'epoch': 0.51}
+{'loss': 1.2571, 'grad_norm': 0.8868727087974548, 'learning_rate': 2.414702952604725e-05, 'epoch': 0.52}
+{'loss': 1.2601, 'grad_norm': 0.7835484743118286, 'learning_rate': 2.395693135935397e-05, 'epoch': 0.52}
+{'loss': 1.2524, 'grad_norm': 6.494460582733154, 'learning_rate': 2.376683319266069e-05, 'epoch': 0.52}
+{'loss': 1.25, 'grad_norm': 3.992957592010498, 'learning_rate': 2.357673502596741e-05, 'epoch': 0.53}
+{'loss': 1.2528, 'grad_norm': 1.0386664867401123, 'learning_rate': 2.338663685927413e-05, 'epoch': 0.53}
+[INFO|configuration_utils.py:440] 2025-07-20 04:02:42,308 >> Configuration saved in generalist_model/checkpoint-70000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:02:42,334 >> Configuration saved in generalist_model/checkpoint-70000/generation_config.json
+ 53%|█████▎    | 70000/131511 [1:12:58<1:00:28, 16.95it/s][INFO|modeling_utils.py:3840] 2025-07-20 04:02:52,331 >> Model weights saved in generalist_model/checkpoint-70000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:02:52,350 >> tokenizer config file saved in generalist_model/checkpoint-70000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:02:52,387 >> Special tokens file saved in generalist_model/checkpoint-70000/special_tokens_map.json
+ 61%|██████    | 80000/131511 [1:23:16<50:38, 16.95it/s][INFO|trainer.py:3993] 2025-07-20 04:13:10,009 >> Saving model checkpoint to generalist_model/checkpoint-80000
+{'loss': 1.2496, 'grad_norm': 0.539199948310852, 'learning_rate': 2.3196538692580848e-05, 'epoch': 0.54}
+{'loss': 1.2496, 'grad_norm': 2.195788621902466, 'learning_rate': 2.3006440525887568e-05, 'epoch': 0.54}
+{'loss': 1.2515, 'grad_norm': 23.806812286376953, 'learning_rate': 2.281634235919429e-05, 'epoch': 0.54}
+{'loss': 1.2477, 'grad_norm': 2.005716562271118, 'learning_rate': 2.2626244192501008e-05, 'epoch': 0.55}
+{'loss': 1.2443, 'grad_norm': 2.1075279712677, 'learning_rate': 2.2436146025807728e-05, 'epoch': 0.55}
+{'loss': 1.2481, 'grad_norm': 1.7574394941329956, 'learning_rate': 2.2246047859114448e-05, 'epoch': 0.56}
+{'loss': 1.2492, 'grad_norm': 2.4977147579193115, 'learning_rate': 2.2055949692421168e-05, 'epoch': 0.56}
+{'loss': 1.2495, 'grad_norm': 0.8976657390594482, 'learning_rate': 2.1865851525727888e-05, 'epoch': 0.56}
+{'loss': 1.2427, 'grad_norm': 0.7818512916564941, 'learning_rate': 2.1675753359034605e-05, 'epoch': 0.57}
+{'loss': 1.2464, 'grad_norm': 1.1946338415145874, 'learning_rate': 2.1485655192341325e-05, 'epoch': 0.57}
+{'loss': 1.2436, 'grad_norm': 0.7413861751556396, 'learning_rate': 2.1295557025648048e-05, 'epoch': 0.57}
+{'loss': 1.2446, 'grad_norm': 0.6275057196617126, 'learning_rate': 2.1105458858954765e-05, 'epoch': 0.58}
+{'loss': 1.2466, 'grad_norm': 0.6555927395820618, 'learning_rate': 2.0915360692261485e-05, 'epoch': 0.58}
+{'loss': 1.2534, 'grad_norm': 0.6454175114631653, 'learning_rate': 2.0725262525568205e-05, 'epoch': 0.59}
+{'loss': 1.2444, 'grad_norm': 1.2811428308486938, 'learning_rate': 2.053516435887492e-05, 'epoch': 0.59}
+{'loss': 1.2463, 'grad_norm': 0.6614195704460144, 'learning_rate': 2.0345066192181645e-05, 'epoch': 0.59}
+{'loss': 1.2406, 'grad_norm': 0.7627924680709839, 'learning_rate': 2.015496802548836e-05, 'epoch': 0.6}
+{'loss': 1.2439, 'grad_norm': 0.666477620601654, 'learning_rate': 1.996486985879508e-05, 'epoch': 0.6}
+{'loss': 1.2514, 'grad_norm': 0.7179393768310547, 'learning_rate': 1.97747716921018e-05, 'epoch': 0.6}
+{'loss': 1.251, 'grad_norm': 3.8335697650909424, 'learning_rate': 1.9584673525408522e-05, 'epoch': 0.61}
+[INFO|configuration_utils.py:440] 2025-07-20 04:13:10,069 >> Configuration saved in generalist_model/checkpoint-80000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:13:10,078 >> Configuration saved in generalist_model/checkpoint-80000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 04:13:13,276 >> Model weights saved in generalist_model/checkpoint-80000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:13:13,284 >> tokenizer config file saved in generalist_model/checkpoint-80000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:13:13,306 >> Special tokens file saved in generalist_model/checkpoint-80000/special_tokens_map.json
+ 68%|██████▊   | 90000/131511 [1:33:28<41:55, 16.50it/s][INFO|trainer.py:3993] 2025-07-20 04:23:22,506 >> Saving model checkpoint to generalist_model/checkpoint-90000
+{'loss': 1.2419, 'grad_norm': 0.9475422501564026, 'learning_rate': 1.9394575358715242e-05, 'epoch': 0.61}
+{'loss': 1.2412, 'grad_norm': 1.0826441049575806, 'learning_rate': 1.9204477192021962e-05, 'epoch': 0.62}
+{'loss': 1.2365, 'grad_norm': 10.384001731872559, 'learning_rate': 1.901437902532868e-05, 'epoch': 0.62}
+{'loss': 1.2406, 'grad_norm': 0.8533844947814941, 'learning_rate': 1.8824280858635402e-05, 'epoch': 0.62}
+{'loss': 1.236, 'grad_norm': 0.9446818828582764, 'learning_rate': 1.8634182691942122e-05, 'epoch': 0.63}
+{'loss': 1.2356, 'grad_norm': 0.7974501252174377, 'learning_rate': 1.844408452524884e-05, 'epoch': 0.63}
+{'loss': 1.2474, 'grad_norm': 0.7083514332771301, 'learning_rate': 1.825398635855556e-05, 'epoch': 0.63}
+{'loss': 1.242, 'grad_norm': 1.500275731086731, 'learning_rate': 1.806388819186228e-05, 'epoch': 0.64}
+{'loss': 1.2468, 'grad_norm': 1.4102599620819092, 'learning_rate': 1.7873790025169e-05, 'epoch': 0.64}
+{'loss': 1.241, 'grad_norm': 0.7367730736732483, 'learning_rate': 1.768369185847572e-05, 'epoch': 0.65}
+{'loss': 1.2339, 'grad_norm': 4.968955993652344, 'learning_rate': 1.7493593691782435e-05, 'epoch': 0.65}
+{'loss': 1.24, 'grad_norm': 0.7280349135398865, 'learning_rate': 1.7303495525089155e-05, 'epoch': 0.65}
+{'loss': 1.2437, 'grad_norm': 1.0052828788757324, 'learning_rate': 1.711339735839588e-05, 'epoch': 0.66}
+{'loss': 1.2407, 'grad_norm': 3.173746347427368, 'learning_rate': 1.6923299191702596e-05, 'epoch': 0.66}
+{'loss': 1.2411, 'grad_norm': 0.8029053807258606, 'learning_rate': 1.6733201025009316e-05, 'epoch': 0.67}
+{'loss': 1.228, 'grad_norm': 1.1552801132202148, 'learning_rate': 1.6543102858316036e-05, 'epoch': 0.67}
+{'loss': 1.238, 'grad_norm': 0.4757172763347626, 'learning_rate': 1.6353004691622756e-05, 'epoch': 0.67}
+{'loss': 1.24, 'grad_norm': 1.3516833782196045, 'learning_rate': 1.6162906524929476e-05, 'epoch': 0.68}
+{'loss': 1.2387, 'grad_norm': 1.1013747453689575, 'learning_rate': 1.5972808358236192e-05, 'epoch': 0.68}
+{'loss': 1.2293, 'grad_norm': 1.0697009563446045, 'learning_rate': 1.5782710191542912e-05, 'epoch': 0.68}
+[INFO|configuration_utils.py:440] 2025-07-20 04:23:22,509 >> Configuration saved in generalist_model/checkpoint-90000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:23:22,511 >> Configuration saved in generalist_model/checkpoint-90000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 04:23:26,343 >> Model weights saved in generalist_model/checkpoint-90000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:23:26,347 >> tokenizer config file saved in generalist_model/checkpoint-90000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:23:26,356 >> Special tokens file saved in generalist_model/checkpoint-90000/special_tokens_map.json
+ 76%|███████▌  | 100000/131511 [1:43:45<31:03, 16.91it/s][INFO|trainer.py:3993] 2025-07-20 04:33:39,270 >> Saving model checkpoint to generalist_model/checkpoint-100000
+{'loss': 1.2364, 'grad_norm': 1.364712119102478, 'learning_rate': 1.5592612024849636e-05, 'epoch': 0.69}
+{'loss': 1.2381, 'grad_norm': 6.238924503326416, 'learning_rate': 1.5402513858156353e-05, 'epoch': 0.69}
+{'loss': 1.2356, 'grad_norm': 1.174956202507019, 'learning_rate': 1.5212415691463073e-05, 'epoch': 0.7}
+{'loss': 1.2356, 'grad_norm': 0.9040026664733887, 'learning_rate': 1.5022317524769791e-05, 'epoch': 0.7}
+{'loss': 1.237, 'grad_norm': 1.0960030555725098, 'learning_rate': 1.483221935807651e-05, 'epoch': 0.7}
+{'loss': 1.2327, 'grad_norm': 0.8388651013374329, 'learning_rate': 1.4642121191383231e-05, 'epoch': 0.71}
+{'loss': 1.235, 'grad_norm': 1.3717488050460815, 'learning_rate': 1.4452023024689951e-05, 'epoch': 0.71}
+{'loss': 1.2334, 'grad_norm': 1.1749663352966309, 'learning_rate': 1.426192485799667e-05, 'epoch': 0.71}
+{'loss': 1.2328, 'grad_norm': 2.8819117546081543, 'learning_rate': 1.4071826691303388e-05, 'epoch': 0.72}
+{'loss': 1.2379, 'grad_norm': 0.7951604127883911, 'learning_rate': 1.388172852461011e-05, 'epoch': 0.72}
+{'loss': 1.2384, 'grad_norm': 0.7156736850738525, 'learning_rate': 1.369163035791683e-05, 'epoch': 0.73}
+{'loss': 1.2365, 'grad_norm': 0.614631175994873, 'learning_rate': 1.3501532191223548e-05, 'epoch': 0.73}
+{'loss': 1.2368, 'grad_norm': 0.8360192179679871, 'learning_rate': 1.3311434024530268e-05, 'epoch': 0.73}
+{'loss': 1.226, 'grad_norm': 0.9361290335655212, 'learning_rate': 1.3121335857836988e-05, 'epoch': 0.74}
+{'loss': 1.2369, 'grad_norm': 0.7393157482147217, 'learning_rate': 1.2931237691143708e-05, 'epoch': 0.74}
+{'loss': 1.237, 'grad_norm': 1.0816549062728882, 'learning_rate': 1.2741139524450426e-05, 'epoch': 0.75}
+{'loss': 1.2331, 'grad_norm': 34.699432373046875, 'learning_rate': 1.2551041357757146e-05, 'epoch': 0.75}
+{'loss': 1.2286, 'grad_norm': 0.7792004346847534, 'learning_rate': 1.2360943191063866e-05, 'epoch': 0.75}
+{'loss': 1.2293, 'grad_norm': 0.5640589594841003, 'learning_rate': 1.2170845024370585e-05, 'epoch': 0.76}
+{'loss': 1.2366, 'grad_norm': 0.7315064072608948, 'learning_rate': 1.1980746857677305e-05, 'epoch': 0.76}
+[INFO|configuration_utils.py:440] 2025-07-20 04:33:39,284 >> Configuration saved in generalist_model/checkpoint-100000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:33:39,292 >> Configuration saved in generalist_model/checkpoint-100000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 04:33:42,475 >> Model weights saved in generalist_model/checkpoint-100000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:33:42,478 >> tokenizer config file saved in generalist_model/checkpoint-100000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:33:42,479 >> Special tokens file saved in generalist_model/checkpoint-100000/special_tokens_map.json
+ 84%|████████▎ | 110000/131511 [1:53:57<21:07, 16.97it/s][INFO|trainer.py:3993] 2025-07-20 04:43:51,530 >> Saving model checkpoint to generalist_model/checkpoint-110000
+{'loss': 1.2333, 'grad_norm': 1.103859543800354, 'learning_rate': 1.1790648690984025e-05, 'epoch': 0.76}
+{'loss': 1.2293, 'grad_norm': 2.7466588020324707, 'learning_rate': 1.1600550524290745e-05, 'epoch': 0.77}
+{'loss': 1.23, 'grad_norm': 0.6224541068077087, 'learning_rate': 1.1410452357597463e-05, 'epoch': 0.77}
+{'loss': 1.2282, 'grad_norm': 2.4589357376098633, 'learning_rate': 1.1220354190904183e-05, 'epoch': 0.78}
+{'loss': 1.2293, 'grad_norm': 0.7172794342041016, 'learning_rate': 1.1030256024210903e-05, 'epoch': 0.78}
+{'loss': 1.2302, 'grad_norm': 0.977047324180603, 'learning_rate': 1.0840157857517623e-05, 'epoch': 0.78}
+{'loss': 1.2284, 'grad_norm': 6.897757530212402, 'learning_rate': 1.0650059690824342e-05, 'epoch': 0.79}
+{'loss': 1.2271, 'grad_norm': 1.3112189769744873, 'learning_rate': 1.0459961524131062e-05, 'epoch': 0.79}
+{'loss': 1.2257, 'grad_norm': 0.83884197473526, 'learning_rate': 1.0269863357437782e-05, 'epoch': 0.79}
+{'loss': 1.2271, 'grad_norm': 1.180753469467163, 'learning_rate': 1.0079765190744502e-05, 'epoch': 0.8}
+{'loss': 1.2235, 'grad_norm': 0.6061429381370544, 'learning_rate': 9.88966702405122e-06, 'epoch': 0.8}
+{'loss': 1.2306, 'grad_norm': 0.8758976459503174, 'learning_rate': 9.69956885735794e-06, 'epoch': 0.81}
+{'loss': 1.23, 'grad_norm': 0.7743828296661377, 'learning_rate': 9.50947069066466e-06, 'epoch': 0.81}
+{'loss': 1.2276, 'grad_norm': 1.1759934425354004, 'learning_rate': 9.319372523971379e-06, 'epoch': 0.81}
+{'loss': 1.2287, 'grad_norm': 3.140251874923706, 'learning_rate': 9.129274357278099e-06, 'epoch': 0.82}
+{'loss': 1.2269, 'grad_norm': 0.8182234168052673, 'learning_rate': 8.939176190584817e-06, 'epoch': 0.82}
+{'loss': 1.2292, 'grad_norm': 3.1410908699035645, 'learning_rate': 8.749078023891539e-06, 'epoch': 0.83}
+{'loss': 1.2332, 'grad_norm': 0.7163562178611755, 'learning_rate': 8.558979857198257e-06, 'epoch': 0.83}
+{'loss': 1.2279, 'grad_norm': 0.7478712201118469, 'learning_rate': 8.368881690504977e-06, 'epoch': 0.83}
+{'loss': 1.2243, 'grad_norm': 0.5868740677833557, 'learning_rate': 8.178783523811696e-06, 'epoch': 0.84}
+[INFO|configuration_utils.py:440] 2025-07-20 04:43:51,533 >> Configuration saved in generalist_model/checkpoint-110000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:43:51,535 >> Configuration saved in generalist_model/checkpoint-110000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 04:43:54,721 >> Model weights saved in generalist_model/checkpoint-110000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:43:54,724 >> tokenizer config file saved in generalist_model/checkpoint-110000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:43:54,726 >> Special tokens file saved in generalist_model/checkpoint-110000/special_tokens_map.json
+ 84%|████████▎ | 110000/131511 [1:54:08<21:07, 16.97it/s][INFO|trainer.py:4102] 2025-07-20 04:44:02,081 >> Deleting older checkpoint [generalist_model/checkpoint-10000] due to args.save_total_limit
+ 91%|█████████ | 120000/131511 [2:04:08<11:32, 16.62it/s][INFO|trainer.py:3993] 2025-07-20 04:54:02,008 >> Saving model checkpoint to generalist_model/checkpoint-120000
+{'loss': 1.2243, 'grad_norm': 1.204929232597351, 'learning_rate': 7.988685357118417e-06, 'epoch': 0.84}
+{'loss': 1.2262, 'grad_norm': 3.098653554916382, 'learning_rate': 7.798587190425136e-06, 'epoch': 0.84}
+{'loss': 1.2291, 'grad_norm': 3.3671584129333496, 'learning_rate': 7.608489023731856e-06, 'epoch': 0.85}
+{'loss': 1.2277, 'grad_norm': 1.431062936782837, 'learning_rate': 7.418390857038575e-06, 'epoch': 0.85}
+{'loss': 1.2285, 'grad_norm': 0.6358833312988281, 'learning_rate': 7.228292690345295e-06, 'epoch': 0.86}
+{'loss': 1.2254, 'grad_norm': 0.9523244500160217, 'learning_rate': 7.038194523652014e-06, 'epoch': 0.86}
+{'loss': 1.2291, 'grad_norm': 0.8851044178009033, 'learning_rate': 6.848096356958734e-06, 'epoch': 0.86}
+{'loss': 1.2276, 'grad_norm': 1.0260188579559326, 'learning_rate': 6.657998190265453e-06, 'epoch': 0.87}
+{'loss': 1.2214, 'grad_norm': 0.9886509776115417, 'learning_rate': 6.467900023572173e-06, 'epoch': 0.87}
+{'loss': 1.2244, 'grad_norm': 1.3454502820968628, 'learning_rate': 6.277801856878893e-06, 'epoch': 0.87}
+{'loss': 1.232, 'grad_norm': 0.9686360955238342, 'learning_rate': 6.087703690185613e-06, 'epoch': 0.88}
+{'loss': 1.225, 'grad_norm': 0.7176986932754517, 'learning_rate': 5.897605523492332e-06, 'epoch': 0.88}
+{'loss': 1.2286, 'grad_norm': 0.4343578517436981, 'learning_rate': 5.707507356799052e-06, 'epoch': 0.89}
+{'loss': 1.22, 'grad_norm': 1.5080474615097046, 'learning_rate': 5.517409190105771e-06, 'epoch': 0.89}
+{'loss': 1.2261, 'grad_norm': 0.7453992962837219, 'learning_rate': 5.327311023412491e-06, 'epoch': 0.89}
+{'loss': 1.2252, 'grad_norm': 0.7548054456710815, 'learning_rate': 5.1372128567192095e-06, 'epoch': 0.9}
+{'loss': 1.2288, 'grad_norm': 0.8586546182632446, 'learning_rate': 4.9471146900259295e-06, 'epoch': 0.9}
+{'loss': 1.2255, 'grad_norm': 7.735532283782959, 'learning_rate': 4.757016523332649e-06, 'epoch': 0.9}
+{'loss': 1.2194, 'grad_norm': 0.9122852683067322, 'learning_rate': 4.566918356639369e-06, 'epoch': 0.91}
+{'loss': 1.2217, 'grad_norm': 0.6107710003852844, 'learning_rate': 4.376820189946088e-06, 'epoch': 0.91}
+[INFO|configuration_utils.py:440] 2025-07-20 04:54:02,014 >> Configuration saved in generalist_model/checkpoint-120000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 04:54:02,016 >> Configuration saved in generalist_model/checkpoint-120000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 04:54:07,504 >> Model weights saved in generalist_model/checkpoint-120000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 04:54:07,507 >> tokenizer config file saved in generalist_model/checkpoint-120000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 04:54:07,508 >> Special tokens file saved in generalist_model/checkpoint-120000/special_tokens_map.json
+ 91%|█████████ | 120000/131511 [2:04:18<11:32, 16.62it/s][INFO|trainer.py:4102] 2025-07-20 04:54:15,245 >> Deleting older checkpoint [generalist_model/checkpoint-20000] due to args.save_total_limit
+ 99%|█████████▉| 130000/131511 [2:14:25<01:28, 17.00it/s][INFO|trainer.py:3993] 2025-07-20 05:04:19,669 >> Saving model checkpoint to generalist_model/checkpoint-130000
+{'loss': 1.222, 'grad_norm': 0.9784239530563354, 'learning_rate': 4.186722023252808e-06, 'epoch': 0.92}
+{'loss': 1.2179, 'grad_norm': 0.7620388269424438, 'learning_rate': 3.996623856559527e-06, 'epoch': 0.92}
+{'loss': 1.2217, 'grad_norm': 0.6247091293334961, 'learning_rate': 3.8065256898662473e-06, 'epoch': 0.92}
+{'loss': 1.225, 'grad_norm': 0.9272405505180359, 'learning_rate': 3.616427523172967e-06, 'epoch': 0.93}
+{'loss': 1.2197, 'grad_norm': 0.9686821699142456, 'learning_rate': 3.4263293564796865e-06, 'epoch': 0.93}
+{'loss': 1.222, 'grad_norm': 0.8892022967338562, 'learning_rate': 3.236231189786406e-06, 'epoch': 0.94}
+{'loss': 1.2229, 'grad_norm': 1.0812687873840332, 'learning_rate': 3.0461330230931253e-06, 'epoch': 0.94}
+{'loss': 1.229, 'grad_norm': 0.9784612655639648, 'learning_rate': 2.856034856399845e-06, 'epoch': 0.94}
+{'loss': 1.2207, 'grad_norm': 0.8325833082199097, 'learning_rate': 2.6659366897065646e-06, 'epoch': 0.95}
+{'loss': 1.2249, 'grad_norm': 1.330268383026123, 'learning_rate': 2.475838523013284e-06, 'epoch': 0.95}
+{'loss': 1.2197, 'grad_norm': 0.7796584367752075, 'learning_rate': 2.285740356320004e-06, 'epoch': 0.95}
+{'loss': 1.2124, 'grad_norm': 4.546328544616699, 'learning_rate': 2.0956421896267234e-06, 'epoch': 0.96}
+{'loss': 1.2219, 'grad_norm': 3.027324914932251, 'learning_rate': 1.905544022933443e-06, 'epoch': 0.96}
+{'loss': 1.2197, 'grad_norm': 0.8384736180305481, 'learning_rate': 1.7154458562401625e-06, 'epoch': 0.97}
+{'loss': 1.2218, 'grad_norm': 1.0220489501953125, 'learning_rate': 1.525347689546882e-06, 'epoch': 0.97}
+{'loss': 1.2196, 'grad_norm': 0.6330748796463013, 'learning_rate': 1.3352495228536017e-06, 'epoch': 0.97}
+{'loss': 1.2202, 'grad_norm': 0.46825382113456726, 'learning_rate': 1.1451513561603213e-06, 'epoch': 0.98}
+{'loss': 1.2195, 'grad_norm': 0.822135865688324, 'learning_rate': 9.55053189467041e-07, 'epoch': 0.98}
+{'loss': 1.2284, 'grad_norm': 1.1834436655044556, 'learning_rate': 7.649550227737605e-07, 'epoch': 0.98}
+{'loss': 1.2201, 'grad_norm': 0.6738945245742798, 'learning_rate': 5.7485685608048e-07, 'epoch': 0.99}
+[INFO|configuration_utils.py:440] 2025-07-20 05:04:19,672 >> Configuration saved in generalist_model/checkpoint-130000/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 05:04:19,680 >> Configuration saved in generalist_model/checkpoint-130000/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 05:04:22,861 >> Model weights saved in generalist_model/checkpoint-130000/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 05:04:22,864 >> tokenizer config file saved in generalist_model/checkpoint-130000/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 05:04:22,881 >> Special tokens file saved in generalist_model/checkpoint-130000/special_tokens_map.json
+[INFO|trainer.py:4102] 2025-07-20 05:04:29,572 >> Deleting older checkpoint [generalist_model/checkpoint-30000] due to args.save_total_limit
+100%|██████████| 131511/131511 [2:16:12<00:00, 16.68it/s][INFO|trainer.py:3993] 2025-07-20 05:06:05,967 >> Saving model checkpoint to generalist_model/checkpoint-131511
+{'loss': 1.2238, 'grad_norm': 0.8654480576515198, 'learning_rate': 3.847586893871996e-07, 'epoch': 0.99}
+{'loss': 1.2166, 'grad_norm': 0.5305109620094299, 'learning_rate': 1.9466052269391913e-07, 'epoch': 1.0}
+{'loss': 1.2231, 'grad_norm': 0.971851110458374, 'learning_rate': 4.56235600063873e-09, 'epoch': 1.0}
+[INFO|configuration_utils.py:440] 2025-07-20 05:06:05,992 >> Configuration saved in generalist_model/checkpoint-131511/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 05:06:05,994 >> Configuration saved in generalist_model/checkpoint-131511/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 05:06:09,830 >> Model weights saved in generalist_model/checkpoint-131511/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 05:06:09,832 >> tokenizer config file saved in generalist_model/checkpoint-131511/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 05:06:09,869 >> Special tokens file saved in generalist_model/checkpoint-131511/special_tokens_map.json
+100%|██████████| 131511/131511 [2:16:23<00:00, 16.68it/s][INFO|trainer.py:4102] 2025-07-20 05:06:17,206 >> Deleting older checkpoint [generalist_model/checkpoint-40000] due to args.save_total_limit
+[INFO|trainer.py:2676] 2025-07-20 05:06:17,264 >>
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+100%|██████████| 131511/131511 [2:16:23<00:00, 16.07it/s]
+{'train_runtime': 8185.5926, 'train_samples_per_second': 16.066, 'train_steps_per_second': 16.066, 'train_loss': 1.6044641077301367, 'epoch': 1.0}
+[INFO|trainer.py:3993] 2025-07-20 05:06:17,267 >> Saving model checkpoint to generalist_model
+[INFO|configuration_utils.py:440] 2025-07-20 05:06:17,281 >> Configuration saved in generalist_model/config.json
+[INFO|configuration_utils.py:891] 2025-07-20 05:06:17,283 >> Configuration saved in generalist_model/generation_config.json
+[INFO|modeling_utils.py:3840] 2025-07-20 05:06:20,519 >> Model weights saved in generalist_model/model.safetensors
+[INFO|tokenization_utils_base.py:2525] 2025-07-20 05:06:20,522 >> tokenizer config file saved in generalist_model/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2534] 2025-07-20 05:06:20,531 >> Special tokens file saved in generalist_model/special_tokens_map.json
+***** train metrics *****
+  epoch                    =        1.0
+  total_flos               = 64005658GF
+  train_loss               =     1.6045
+  train_runtime            = 2:16:25.59
+  train_samples            =     131511
+  train_samples_per_second =     16.066
+  train_steps_per_second   =     16.066
+07/20/2025 05:06:20 - INFO - __main__ - *** Evaluate ***
+[INFO|trainer.py:4327] 2025-07-20 05:06:20,614 >>
+***** Running Evaluation *****
+[INFO|trainer.py:4329] 2025-07-20 05:06:20,614 >>   Num examples = 2622
+[INFO|trainer.py:4332] 2025-07-20 05:06:20,614 >>   Batch size = 1
+100%|██████████| 2622/2622 [00:50<00:00, 52.22it/s]
+***** eval metrics *****
+  epoch                   =        1.0
+  eval_accuracy           =     0.6072
+  eval_loss               =     1.2352
+  eval_runtime            = 0:00:50.67
+  eval_samples            =       2622
+  eval_samples_per_second =     51.741
+  eval_steps_per_second   =     51.741
+  perplexity              =      3.439
+[INFO|modelcard.py:450] 2025-07-20 05:07:11,306 >> Dropping the following result as it does not have all the necessary fields:
+{'task': {'name': 'Causal Language Modeling', 'type': 'text-generation'}, 'metrics': [{'name': 'Accuracy', 'type': 'accuracy', 'value': 0.6072435434286767}]}

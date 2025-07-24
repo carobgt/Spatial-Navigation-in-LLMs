@@ -1,0 +1,33 @@
+  0%|          | 0/131511 [00:00<?, ?it/s][WARNING|logging.py:328] 2025-07-20 02:30:21,022 >> `loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+ 12%|█▏        | 15830/131511 [18:36<2:03:54, 15.56it/s] 
+{'loss': 4.0007, 'grad_norm': 2.4525563716888428, 'learning_rate': 4.981028202964011e-05, 'epoch': 0.0}
+{'loss': 3.8119, 'grad_norm': 1.634883999824524, 'learning_rate': 4.962018386294683e-05, 'epoch': 0.01}
+{'loss': 3.7665, 'grad_norm': 2.566864013671875, 'learning_rate': 4.9430085696253546e-05, 'epoch': 0.01}
+{'loss': 3.7472, 'grad_norm': 1.8045517206192017, 'learning_rate': 4.923998752956027e-05, 'epoch': 0.02}
+{'loss': 3.7152, 'grad_norm': 1.7710593938827515, 'learning_rate': 4.9049889362866986e-05, 'epoch': 0.02}
+{'loss': 3.6902, 'grad_norm': 1.7243413925170898, 'learning_rate': 4.88597911961737e-05, 'epoch': 0.02}
+{'loss': 3.678, 'grad_norm': 1.7222120761871338, 'learning_rate': 4.8669693029480426e-05, 'epoch': 0.03}
+{'loss': 3.6616, 'grad_norm': 1.8340821266174316, 'learning_rate': 4.847959486278715e-05, 'epoch': 0.03}
+{'loss': 3.6569, 'grad_norm': 1.9160957336425781, 'learning_rate': 4.8289496696093866e-05, 'epoch': 0.03}
+{'loss': 3.6461, 'grad_norm': 1.7675533294677734, 'learning_rate': 4.809939852940058e-05, 'epoch': 0.04}
+{'loss': 3.642, 'grad_norm': 1.705420970916748, 'learning_rate': 4.7909300362707306e-05, 'epoch': 0.04}
+{'loss': 3.6373, 'grad_norm': 1.8209985494613647, 'learning_rate': 4.771920219601402e-05, 'epoch': 0.05}
+{'loss': 3.631, 'grad_norm': 1.6319215297698975, 'learning_rate': 4.752910402932074e-05, 'epoch': 0.05}
+{'loss': 3.6254, 'grad_norm': 1.9238981008529663, 'learning_rate': 4.733900586262746e-05, 'epoch': 0.05}
+{'loss': 3.6207, 'grad_norm': 1.701921820640564, 'learning_rate': 4.714890769593418e-05, 'epoch': 0.06}
+{'loss': 3.6228, 'grad_norm': 1.6981638669967651, 'learning_rate': 4.69588095292409e-05, 'epoch': 0.06}
+{'loss': 3.6161, 'grad_norm': 1.6187549829483032, 'learning_rate': 4.6768711362547627e-05, 'epoch': 0.06}
+{'loss': 3.6155, 'grad_norm': 1.7084063291549683, 'learning_rate': 4.657861319585434e-05, 'epoch': 0.07}
+{'loss': 3.6127, 'grad_norm': 1.856589436531067, 'learning_rate': 4.638851502916106e-05, 'epoch': 0.07}
+{'loss': 3.6096, 'grad_norm': 1.8273786306381226, 'learning_rate': 4.619841686246778e-05, 'epoch': 0.08}
+{'loss': 3.6079, 'grad_norm': 1.5099151134490967, 'learning_rate': 4.60083186957745e-05, 'epoch': 0.08}
+{'loss': 3.6069, 'grad_norm': 1.6997780799865723, 'learning_rate': 4.581822052908122e-05, 'epoch': 0.08}
+{'loss': 3.5994, 'grad_norm': 1.670563817024231, 'learning_rate': 4.562812236238794e-05, 'epoch': 0.09}
+{'loss': 3.6012, 'grad_norm': 1.685847282409668, 'learning_rate': 4.543802419569466e-05, 'epoch': 0.09}
+{'loss': 3.5996, 'grad_norm': 1.5167521238327026, 'learning_rate': 4.524792602900138e-05, 'epoch': 0.1}
+{'loss': 3.5952, 'grad_norm': 1.5079500675201416, 'learning_rate': 4.50578278623081e-05, 'epoch': 0.1}
+{'loss': 3.5993, 'grad_norm': 1.6536996364593506, 'learning_rate': 4.486772969561482e-05, 'epoch': 0.1}
+{'loss': 3.5969, 'grad_norm': 1.6628326177597046, 'learning_rate': 4.467763152892154e-05, 'epoch': 0.11}
+{'loss': 3.592, 'grad_norm': 1.696353793144226, 'learning_rate': 4.4487533362228254e-05, 'epoch': 0.11}
+{'loss': 3.5658, 'grad_norm': 1.6393266916275024, 'learning_rate': 4.429743519553498e-05, 'epoch': 0.11}
+{'loss': 3.3993, 'grad_norm': 3.567595958709717, 'learning_rate': 4.4107337028841694e-05, 'epoch': 0.12}
