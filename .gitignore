@@ -6,3 +6,8 @@ MSC_THESIS/all_models/
 all_models/
 MSC_THESIS/.cache/
 .cache/
+generalist_data/
+generalist_tokenizer/
+generalist_config/
+MSC_THESIS/generalist_data/
+MSC_THESIS/generalist_tokenizer/
