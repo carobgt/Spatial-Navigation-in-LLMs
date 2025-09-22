@@ -1,8 +1,0 @@
-{
-  "tokenizer_class": "GPT2Tokenizer",
-  "bos_token": "[SOS]",
-  "eos_token": "[EOS]",
-  "unk_token": "[UNK]",
-  "pad_token": "[PAD]",
-  "model_max_length": 1024
-}
