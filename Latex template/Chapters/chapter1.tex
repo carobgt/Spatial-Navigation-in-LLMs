@@ -1,0 +1,61 @@
+\chapter{Introduction}
+
+\section{Motivation}
+
+Generative pre-trained transformers (GPTs, \cite{radford2018improving}), a type of large language model, often exhibit emergent cognitive capabilities despite being trained on next-token prediction, an objective with no explicit mechanism for planning or reasoning \citep{ bubeck2023sparksartificialgeneralintelligence, bachmann2024ntp}. How does this happen? Models trained solely to predict the next word in a sequence can solve complex tasks that appear to require multi-step planning, abstract reasoning, and global understanding. An example of this in in-context learning (ICL), the ability of a language model to learn a new task from examples provided directly in the prompt, without gradient updates or parameter changes \citep{brown2020languagemodelsfewshotlearners}. This apparent contradiction is central to understanding the nature of `intelligence' in neural networks and has implications for AI safety and development.
+
+Spatial navigation provides an ideal case study for investigating this phenomenon. Accurate navigation requires maintaining knowledge of position, understanding spatial relationships, and planning efficient routes. If a model can navigate effectively, it must have learned something about spatial structure from purely local prediction. We can use spatial reasoning as a lens to examine how complex cognitive capabilities emerge from simple training objectives, and whether different training approaches lead to fundamentally different internal algorithms.
+
+We currently lack a mechanistic understanding of how these capabilities arise. Most research evaluates what models can do rather than how they do it, leaving critical questions unanswered about the computational mechanisms that produce complex behaviour. The central question driving this thesis is: How does local next-token prediction give rise to global spatial understanding? Answering this requires looking inside these models to understand the algorithms they learn and how training paradigms shape those algorithms.
+
+\section{Research Questions}
+
+This thesis addresses one primary research question and several supporting questions that probe different aspects of spatial reasoning in transformers.
+
+\textbf{Primary Research Question:} \textit{Do generative pre-trained transformers learn generalisable `cognitive maps' or develop task-specific spatial heuristics when trained on spatial navigation tasks?}
+
+This question is motivated by the tension between two possible explanations for observed spatial competence. On one hand, the model could develop a cognitive map, an idea originating from cognitive psychology \citep{tolman1948cognitive}. A cognitive map represents a flexible, generalisable internal model of the environment's spatial relationships—akin to a mental map a person might use to find new shortcuts. On the other hand, the model could rely on spatial heuristics, which are specialised, rule-of-thumb procedures that work well for specific task distributions but fail to generalise beyond their training regime (e.g., `always turn right at a T-junction'). 
+
+\textbf{Secondary Research Questions:}
+\begin{enumerate}
+    \item \textit{What are the computational circuits underlying spatial reasoning in GPTs?}
+    \item \textit{How do training objectives and data characteristics shape the internal algorithms that emerge during learning?}
+    \item \textit{What are the generalisation boundaries of different training approaches?}
+    %\item \textit{How do in-weights and in-context learning jointly contribute to solving a new spatial task?} Need to add more ICL analysis to include this
+\end{enumerate}
+
+These questions probe the mechanistic basis of spatial reasoning, the causal relationship between training data and learned algorithms, and the practical limits of different approaches to spatial learning.
+
+\section{Research Framework}
+
+This thesis investigates spatial reasoning through a comparison of different training approaches. We train identical GPT-2 \citep{radford2019language} models on various types of spatial data to understand how training objectives and data characteristics influence the learned algorithms. Our first model, the Foraging Model, establishes a baseline for passive, exploratory learning. Trained to predict the next step in random walks, it learns spatial structure without an explicit goal. In contrast, our two other models represent active, goal-directed learning: models learn to generate shortest paths (SP) between specified start and goal points, developing spatial understanding through planning tasks. The SP-Hamiltonian model learns to find optimal paths between two nodes on a grid using Hamiltonian paths as context—sequences that visit every location in the grid exactly once. This provides the model with complete and highly structured information about the environment. Crucially, we also introduce a hybrid model, fine-tuned from SP-Hamiltonian to perform the same planning task but using unstructured, partial random walks. This third variant allows us to isolate the effects of the training \textit{objective} from the statistical properties of the training \textit{data}. 
+
+Our investigation proceeds through three complementary analyses. First, we conduct behavioural analysis to answer `What can the models do?' We designed a suite of experiments to systematically evaluate spatial reasoning capabilities and their boundaries across both in-distribution and out-of-distribution tasks. Second, we perform representational analysis to answer `How is knowledge encoded in the models?' We use principal component analysis (PCA) and linear probing to examine how spatial information is represented in the models' hidden states, revealing whether spatial information is organised in interpretable patterns. Finally, we conduct mechanistic analysis to answer `How do the computational processes work?' By performing targeted ablations and patching experiments, we move beyond correlation to establish the causal role of individual layers and attention heads, allowing us to trace the computational pathway of spatial reasoning through the network. These interventions provide causal evidence about which components are functionally important and allow us to test hypotheses derived from our other analyses.
+
+
+\section{Contributions}
+
+This thesis makes several contributions to understanding how transformers develop spatial reasoning capabilities by dissecting the algorithms that emerge from different training approaches.
+
+\textbf{Empirical Contributions:} We address a key gap in the literature: whilst we know \textit{that} transformers can be trained to perform spatial navigation, we do not yet understand \textit{how} they do it. Our mechanistic analysis identifies two distinct computational strategies learned by the models. The first, emerging from passive, exploratory training, involves consolidating spatial information into a self-sufficient, map-like representation by the middle layers of the network. We find that a single model can adaptively switch between strategies based on context, defaulting to local heuristics when information is limited and engaging its global, map-based system when richer context is available, suggesting a form of hierarchical reasoning. The second, emerging from goal-directed training, relies on a continuous, path-dependent computation that remains reliant on explicit directional inputs throughout all layers. 
+
+\textbf{Theoretical Contributions:} This work provides a theoretical account of how training objectives and data interact to determine the learned algorithm. We show that the objective fundamentally determines the type of computational strategy that emerges—for instance, promoting a general world model over a specialised path-following heuristic. Within the context of that strategy, we demonstrate that the statistical properties of the data are a primary driver of the solution's robustness. Unstructured, exploratory data encourages the development of generalisable representations, mitigating the brittleness induced by training on narrow, structured distributions. This analysis provides a mechanistic basis for the trade-off between specialisation and generalisation, and parallels the exploration–exploitation dilemma studied in cognitive science and reinforcement learning \citep{explorationexploitation}. Just as agents must balance exploring novel states to learn a general model of their environment versus exploiting known strategies to achieve immediate reward, our results suggest that the structure of training data and the chosen objective jointly bias the algorithm toward generalisable “exploration” strategies or specialised “exploitation” heuristics. 
+
+% \textbf{Methodological Contributions:} We introduce novel experimental techniques for probing spatial understanding in neural networks, including methods for testing the transferability of learned representations and examining how models process geometric constraints. These techniques could be applied to study spatial reasoning in other architectures and domains.
+
+The work provides insights into the computational requirements for robust spatial reasoning and suggests principles for designing training procedures that encourage the development of generalisable spatial intelligence rather than brittle task-specific heuristics.
+
+\section{Thesis Structure}
+
+This thesis is organised into six chapters that progress from theoretical background through experimental analysis to broader implications.
+
+\textbf{Chapter 2} reviews the relevant literature on transformer architectures, next-token prediction limitations, and spatial cognition in AI systems. It establishes the theoretical foundation and identifies gaps that this research addresses.
+
+\textbf{Chapter 3} describes the training framework, data generation, and experimental design. It explains the rationale for our approach and presents the models used in the investigation.
+
+\textbf{Chapter 4} analyses the Foraging Model, which learns from random walks. It examines the model's behaviour, internal representations, and computational mechanisms through a series of targeted experiments.
+
+\textbf{Chapter 5} analyses the Shortest Path models, which learn from goal-directed tasks. It compares their capabilities and internal algorithms with the Foraging Model to understand how training objectives, data characteristics and fine-tuning shape spatial reasoning.
+
+\textbf{Chapter 6} synthesises the findings, discusses their implications for understanding emergent capabilities in neural networks, and outlines directions for future research.
+

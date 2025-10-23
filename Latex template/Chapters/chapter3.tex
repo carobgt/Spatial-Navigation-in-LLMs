@@ -1,0 +1,296 @@
+
+\chapter{Training Framework and Experimental Methods}
+
+To investigate how training objectives and data characteristics shape the emergence of spatial intelligence in transformers, we designed a controlled experimental framework that isolates the effects of different learning paradigms. This chapter describes our approach to modelling spatial navigation, the rationale for our experimental design, the specific training procedures used for each model variant, and the comprehensive methodological toolkit employed for analysis. The methodological sections (3.4-3.8) provide general frameworks that readers may reference when examining the specific experimental applications in subsequent chapters.
+
+\section{Modelling Spatial Navigation}
+
+\subsection{Theoretical Foundation}
+
+We model spatial navigation as a sequence prediction problem over graph structures, following the framework established by Spens \& Burgess (2024) and Whittington et al. (2020). In this approach, spatial environments are represented as graphs where nodes correspond to locations and edges represent valid movements between locations. The model's task is to predict sequences of movements through these graphs, learning to navigate based on the geometric relationships between nodes rather than memorised patterns.
+
+This approach provides several advantages for investigating spatial reasoning. First, it allows us to control the complexity of the spatial environment while maintaining realistic navigational challenges. Second, it enables us to generate near-unlimited training data with known spatial properties. Third, it provides a clear framework for evaluating spatial understanding through both behavioural and mechanistic analyses.
+
+\subsection{Grid Environment Design}
+
+We select 4×4 grid environments as a pragmatic compromise between computational complexity and interpretability. While this choice is somewhat arbitrary, it provides sufficient spatial structure to require genuine reasoning (16 nodes, 24 edges) while remaining tractable for detailed mechanistic analysis. Each grid is represented as a graph where nodes correspond to grid positions and edges represent valid movements in the four cardinal directions (NORTH, SOUTH, EAST, WEST). To encourage the model to learn generalisable spatial rules rather than memorising specific node sequences, we assign random two-letter identifiers to each node in each training example. This design choice prevents the model from learning spurious correlations between node names and spatial positions, forcing it to rely on the underlying geometric structure. Without this randomisation, the model might learn to associate specific node names with spatial locations, undermining our goal of understanding how spatial reasoning emerges from structural relationships.
+
+\subsection{Sequence Format and tokenization}
+
+Spatial navigation sequences are formatted as alternating node-direction pairs, following the pattern: \texttt{node\_name DIRECTION node\_name DIRECTION ...}. For example, a sequence might be: \texttt{ab EAST cd SOUTH ef NORTH gh WEST}. This format allows the model to learn both spatial relationships (which nodes are connected) and directional information (how to move between them). To ensure clean mechanistic analysis, we trained a custom Byte Pair Encoding (BPE) tokenizer on our synthetic training dataset, so that each node name and direction token is represented as a single token. This prevents the model from learning spurious patterns based on subword boundaries and ensures that our mechanistic interventions target meaningful computational units. %Without this tokenization, the model might develop different representations for nodes based on their subword structure, introducing confounding factors in our analysis.
+
+\section{Training Objectives and Model Variants}
+
+\subsection{Cognitive Science Motivation}
+
+Our training approaches reflect two modes of spatial behaviour observed in mammals: exploration and goal-directed navigation. Animals usually first build spatial knowledge through undirected exploration. Rats engage in `latent learning' where they explore novel environments without rewards, developing spatial representations that later enable efficient navigation \citep{okeefe1978hippocampus, whittington2022howtobuild}. The Foraging Model mimics this exploratory learning paradigm. Once animals have built spatial knowledge, they engage in efficient goal-directed navigation—returning to nests, finding food sources, or navigating to safety. The Shortest Path models (SP) reflect this goal-directed navigation paradigm. This distinction creates different training curricula for our models. The first is exposed to a broad, unbiased distribution of spatial transitions and is rewarded for correctly predicting any valid movements, which encourages learning the full spatial structure of the environment. In contrast, our SP models are rewarded only for producing direct paths to a goal, exposing them to a smaller subset of the environment’s connectivity. We hypothesise that this narrow data diet, while efficient, may prevent models from forming a complete world model because they never see the suboptimal connections that are crucial for generalisation. 
+% TODO: maybe move this to conclusion
+
+Our experimental design tests whether the exploration-exploitation trade-off observed in biological systems also applies to artificial neural networks. By comparing models trained on exploration versus exploitation, we can observe how different learning modes produce different types of spatial reasoning capabilities.
+
+\subsection{The Foraging Model: Passive Spatial Learning}
+
+The Foraging Model represents our exploration-based approach to spatial learning. This model is trained on random walks through grid environments, learning to predict the next valid step in a sequence of movements. The name `Foraging' reflects the model's task of navigating through space without explicit goals, similar to how animals explore their environment to build spatial knowledge.
+
+\subsubsection*{Training Objective}
+
+The Foraging Model is trained using standard causal language modelling on random walk sequences. Given a sequence of movements through a grid, the model learns to predict the next valid direction-node pair. This objective requires the model to understand both the current spatial context (where it is) and the valid movements from that location (where it can go). 
+
+\subsubsection*{Data Generation}
+
+The training data consists of 1,000,000 random walk sequences, each containing 120 steps. The 120-step length was chosen to approximate the expected cover time for visiting all 16 nodes in a 4×4 grid, ensuring the model has sufficient context to learn global spatial relationships during training.  For each training example, a new 4×4 grid is generated with random node names. A 120-step random walk is then created by starting at a random node and repeatedly selecting valid moves in random directions. This process ensures that the model sees diverse spatial patterns and cannot rely on memorised sequences. The primary advantage of random walks is that they provide an unbiased sampling of the environment’s connectivity. By generating meandering, suboptimal paths, it exposes the model to the full graph of possible movements. This is fundamentally different from a goal-oriented approach, which would only show the model a very small, highly structured subset of paths.
+
+\subsection{The Shortest Path Models: Active Goal-Directed Learning}
+
+The Shortest Path models instantiate our goal-directed, or `exploitation-based', learning paradigm. In contrast to the passive, exploratory learning of the Foraging Model, the SP models are trained on an active planning task: given a context walk that partially (or fully) reveals a grid's structure, they must generate the optimal path between a specified start and goal node. This objective poses a more complex challenge than `foraging'. It requires a two-stage reasoning process: first, the model must infer the underlying spatial graph from the limited context provided; second, it must plan an optimal route within this inferred world model. This directly tests the model's ability to flexibly use partial spatial knowledge for active, goal-directed problem-solving, much like an animal using its cognitive map to find an efficient new route.
+
+\subsubsection{SP-Hamiltonian Model}
+
+The first SP model variant is trained on shortest path tasks with Hamiltonian context walks. In this setup, the model is given a context walk that visits every node in the grid exactly once, and must learn to predict the shortest path between a specified start and goal node. This setup provides the model with complete nodal information but critically, only partial edge information. In a Hamiltonian path, each node (except the start and end) is seen with only two of its potential four connections (one entry, one exit). Therefore, the task is not a simple string search. To find an optimal path between two arbitrary nodes, the model cannot simply follow connections it has already seen. It must infer the full, unseen grid connectivity from the partial information provided. This design choice forces the model to develop a robust internal representation of the 2D grid structure, using the Hamiltonian path to build a complete world model before planning within it.
+
+\subsubsection*{Data Generation}
+Since there are only 552 unique Hamiltonian paths on a fixed $4\times4$ grid, the data generation process is carefully designed to prevent memorisation and encourage the learning of a general, reusable spatial algorithm. A naive model could attempt two forms of memorisation:
+
+\begin{enumerate}
+    \item \textbf{Naive Memorisation:} This involves memorising the exact mapping from an input string \texttt{`context\_walk, start\_node, goal\_node'}  to an output string. With a vocabulary of 676 possible two-letter tokens ($26\times26$), the number of ways to choose 16 unique names for the grid positions is given by:
+    \begin{equation}
+        P(676, 16) = \frac{676!}{(676-16)!} \approx 7.6 \times 10^{31}
+    \end{equation}
+    Since there are 552 unique Hamiltonian paths and 240 start-goal pairs per grid ($16\times15$), the total number of distinct examples is approximately $1 \times 10^{37}$. Our training set of one million examples is a vanishingly small fraction of this space, making this type of memorisation impossible.
+
+    \item \textbf{Structural Memorisation:} A more plausible failure mode is for the model to ignore the random node names and instead memorize the underlying \textit{shape} of the Hamiltonian path (the sequence of directions). This would enable a lookup table strategy mapping \texttt{`shape, start\_node\_index, goal\_node\_index'} to an output path. The size of this potential lookup table is:
+    \begin{equation}
+        552 \text{ shapes} \times 16 \text{ start positions} \times 15 \text{ goal positions} = 132{,}480 \text{ combinations}
+    \end{equation}
+    A 124M parameter model has more than enough capacity to store these 132k key-value pairs. Furthermore, since our training set size ($10^6$) is far larger than the number of unique structural problems it's drawn from, the model is almost guaranteed to see every single one of these combinations multiple times.
+\end{enumerate}
+
+The data generation for the SP-Hamiltonian model is designed to test structural generalisation. First, we exhaustively enumerate all unique Hamiltonian path `shapes' on a canonical 4×4 grid. This set of all possible shapes is then split, with 90\% used for training and 10\% held out for evaluation. This ensures that the model is tested on path structures it has never encountered during training.
+For each training example, the following procedure is used:
+\begin{enumerate}
+\item A new 4×4 grid is procedurally generated with randomised two-letter node identifiers.
+\item A Hamiltonian path shape is randomly selected from the training set of shapes.
+\item This shape is used to generate a concrete Hamiltonian path on the new grid (i.e. adding the relevant node names), which serves as the context.
+\item A random start and goal node are chosen from within this context path.
+\item The true shortest path between these nodes is computed using a standard graph search algorithm and formatted as the target sequence.
+\end{enumerate}
+This methodology forces the model to learn the general geometric principles of Hamiltonian paths on a grid, rather than memorising specific instances. Crucially, we note that since there are 52 solutions starting at a corner space, 25 solutions starting at one of the edge locations, and 36 solutions possible from one of the four center locations, we note that its possible that the model memorises rotations, but 
+
+\subsubsection{SP-Random Walk Model}
+
+The second SP model variant is fine-tuned from the SP-Hamiltonian model using random walk contexts of variable length (10-50 steps). This approach tests the model's ability to extract spatial information from partial, unstructured contexts and perform goal-directed planning within that inferred spatial map. This model is critical to our experimental design as it allows us to ask a more nuanced question: is robust spatial generalisation a product of the passive, exploratory objective of the Foraging Model, or the unstructured, high-entropy data of random walks? Furthermore, it allows us to probe the effects of fine-tuning, examining whether a specialised algorithm can be adapted for greater flexibility when exposed to a new data regime.  
+
+\subsubsection*{Data Generation}
+Generating valid training data for this model requires creating examples that are both solvable and unbiased. A task is considered solvable if the context walk contains all nodes required to form at least one valid shortest path between chosen start/goal nodes. The challenge stems from our use of short random walk contexts (10-50 steps), which provide a sparse and incomplete view of the grid, far below the $\approx120$ steps of its expected cover time. A naive approach would be to generate a random walk and then picking start/goal nodes from it, but this would heavily bias the dataset towards pairs that are close together. This is because short walks are far more likely to contain the nodes for a short path than for a long one, which would prevent the model from learning to solve more difficult planning tasks. To overcome this, we use a filtering methodology that decouples task selection from context generation. This ensures an unbiased distribution of task difficulties across the dataset. The procedure is as follows:
+
+\begin{enumerate}
+\item First, a new 4×4 grid with random node names is generated. A start and goal node pair is randomly sampled from the set of 16 nodes, ensuring that tasks of all difficulties (i.e., all possible Manhattan distances) are selected with equal probability.
+\item All possible shortest paths between the chosen start and goal nodes are computed. This identifies one or more sets of `required nodes' that must be present in the context for the task to be solvable. Crucially, we do not ensure that all \textit{edges} are present in the context; the model is often required to infer unseen connections to find the optimal route.
+\item A fixed context walk length is randomly chosen from the range [10, 50] for the current example. 
+\item Random walks of the chosen length are repeatedly generated until one is found that contains all nodes from at least one of the required sets. Fixing the context length beforehand prevents bias towards longer walks.
+\item Once a valid context is found, one of the shortest paths it supports is randomly chosen as the ground-truth target sequence.
+\end{enumerate}
+
+\subsubsection{Loss Masking}
+
+We use loss masking when training SP models to focus learning on path generation rather than predicting the context prompt \citep{lossmasking}. In standard autoregressive training, a loss is calculated for the model's prediction at every token position. Loss masking modifies this by selectively ignoring the loss for certain parts of the sequence. For our SP models, where the input is structured as \texttt{[Context Walk] [Start/Goal Prompt] [Target Path]}, we apply a mask to set the loss to zero for all tokens in the \texttt{[Context Walk]} and \texttt{[Start/Goal Prompt]} sections. Consequently, the model's parameters are only updated based on its accuracy in predicting the \texttt{[Target Path]}. This is necessary because the context-to-task ratio is high: shortest paths on a 4×4 grid average only 4 nodes while contexts contain 16+ nodes. Without loss masking, the model would spend most of its learning capacity on predicting the context walk rather than the target path. This separation allows us to cleanly distinguish between map-building circuits (context processing) and map-using circuits (path planning), which simplifies later mechanistic analysis.
+
+\section{Training Configuration}
+
+\subsection{Model Architecture}
+
+The goal of our work is not to build the most performant or most interpretable navigation model, but to create an experimental setup that is both mechanistically tractable and relevant to the cognitive capabilities emerging in large-scale LLMs. This goal necessitated a careful choice of architecture. A small toy model would offer tractability but lack relevance. A pre-trained, off-the-shelf LLM would offer relevance but is mechanistically opaque due to confounding knowledge from its pre-training data (for example, semantically meaningful 2-letter tokens such as `if' or `to'). Therefore, we chose to train the standard GPT-2 Small architecture (124M parameters) from scratch. This approach provides the `clean slate' experimental control of a toy model, ensuring that all learned behaviours stem directly from our data. Simultaneously, it uses an architecture that is a standard, well-understood proxy for larger models, allowing us to generate insights that are both controlled and relevant.
+
+\subsection{Training Details}
+
+Models are trained using standard transformer training procedures with the configuration shown in Table \ref{tab:training_config}. We experimented with different learning rates, warm-up schedules, and optimisation strategies but found no significant differences beyond minor variations in convergence speed. The models were trained until convergence on their respective objectives.
+
+\begin{table}[ht]
+\centering
+\caption{Training Configuration for All Models}
+\label{tab:training_config}
+\begin{tabular}{lccc}
+\hline
+Parameter & Foraging & SP-Hamiltonian & SP-RW \\
+\hline
+Batch Size & 64 & 256 & 128 \\
+Learning Rate & 5e-4 & 5e-4 & 5e-4 \\
+Epochs & 2 & 12 & 12+20 \\
+Optimizer & AdamW & AdamW & AdamW \\
+Weight Decay & 0.01 & 0.01 & 0.01 \\
+Warmup Steps & 1000 & 1000 & 1000 \\
+Context Length & 120 & 16 & 10-50 \\
+Training Examples & 1M & 1M & 1M \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Analysis Framework Overview}
+
+To understand how spatial intelligence emerges in these models, we employ a systematic three-part analysis approach that progresses from observable capabilities to internal mechanisms. This framework allows us to address complementary aspects of the central question: how do training objectives shape learned algorithms?
+
+\textbf{Behavioural Analysis} addresses `What can the models do?' by evaluating spatial reasoning capabilities, generalisation boundaries, and task performance across various conditions. This establishes the functional capabilities of each model and identifies interesting phenomena that warrant deeper investigation.
+
+\textbf{Representational Analysis} addresses `What knowledge have the models encoded?' by examining the structure and organisation of internal representations. Through techniques like Principal Component Analysis and linear probing, we can visualise how spatial information is organised across network layers and determine whether interpretable geometric patterns emerge.
+
+\textbf{Mechanistic Analysis} addresses `How do the computational processes work?' by using causal interventions to test hypotheses about internal algorithms. Through activation patching, ablation studies, and other interventional techniques, we move beyond correlation to establish the causal role of different components in spatial reasoning.
+
+This progression from behaviour to representation to mechanism ensures that our investigation is grounded in observable phenomena while building toward mechanistic understanding. The following sections provide detailed methodological frameworks for each analysis type, establishing the technical foundations that will be applied in subsequent chapters.
+
+\section{Behavioural Analysis Methods}
+
+\subsection{Inference Procedures}
+
+The fundamental difference between our models lies in their inference objectives. The Foraging Model performs open-ended spatial prediction: given a sequence of spatial movements, it must predict any valid next step. This tests the model's ability to maintain spatial awareness and generate locally coherent movements without specific goals.
+
+In contrast, the SP models perform goal-directed inference: given spatial context and explicit start/goal nodes, they must generate optimal paths between specified locations. This tests planning capabilities and the ability to reason about spatial relationships to achieve specific objectives.
+
+Both models use autoregressive generation where each predicted token is appended to the prompt for subsequent predictions. The input format follows the training structure with alternating node-direction pairs (e.g., `ab EAST cd SOUTH ef NORTH'). For evaluation on novel grids, we generate new random node identifiers.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=1\textwidth]{figures/tasks.png}
+\caption[Example tasks for both models.]{
+\textbf{Example tasks for both models.} Left: Foraging Model training uses random walks as context (left) and predicts valid next steps (right, red arrows). Right: SP-H training uses Hamiltonian paths as context (left, blue arrows) and predicts shortest path between start (red) and end (green) nodes (right, multiple valid paths shown). }
+\label{fig:model_tasks_and_behaviour}
+\end{figure*}
+
+
+\subsection{Core Evaluation Tasks}
+
+\textbf{Next-Step Prediction (Foraging Model):} The fundamental task measures whether models can predict valid next moves given spatial context. The Foraging Model receives a sequence of spatial movements and must predict the next valid node-direction pair. This tests the model's ability to maintain spatial awareness and generate locally coherent movements without specific goals. Accuracy is measured as exact token matches for valid moves only.
+
+\textbf{Path Generation (SP Models):} SP models generate complete paths between specified start and goal nodes given spatial context. This tests planning capabilities and the ability to reason about spatial relationships to achieve specific objectives. We measure both local validity (each step represents a legal move) and global success (reaching the target destination).
+
+\textbf{Loop Completion:} This task tests abstract geometric reasoning by presenting models with paths that form closed loops, requiring prediction of the final node to return to the starting position. For example, given `aa NORTH bb EAST cc SOUTH dd WEST', the model must predict `aa'. The task tests spatial abstraction by requiring the model to understand geometric constraints and complete partial patterns. We test loops of varying sizes (2-12 hops), where a `hop' represents a single directional movement. For example, a 2-hop loop is a simple back-and-forth, while a 12-hop loop represents a 4x4 square. An extension of this is a more complex,  Hamiltonian cycle completion, where the path visits every node in the grid exactly once before returning to start, testing whether models develop complete global representations of spatial topology. For SP models, both tasks are adapted by providing start and goal nodes as the loop endpoints. Loop completion and Hamiltonian tasks are particularly interesting because they represent the minimum information required—models must infer edges not explicitly seen in the context and navigate without a global understanding of the grid structure.
+
+\textbf{Context Length Robustness:} We systematically vary the amount of spatial context provided (from minimal 2-step contexts to maximum training length) to identify how performance fluctuates with different amounts of information. This reveals how models adapt their reasoning strategies based on available context, from relying on minimal information to leveraging rich spatial context. 
+
+\begin{figure}[h]
+\centering
+% PLACEHOLDER: Figure showing examples of all evaluation tasks
+% Include: SP task (context walk+start/goal+valid paths), foraging task (context walk + valid directions), 
+% loop completion, hamiltonian cycle completion, high MD task, and edge-edge task
+\caption[Examples of core evaluation tasks.]{Examples of core evaluation tasks. (a) Foraging Model next-step prediction: given context walk, predict valid next direction. (b) SP Model path generation: given context walk and start/goal nodes, generate shortest path. (c) Loop completion: complete closed loop by predicting return node. (d) Hamiltonian cycle completion: complete cycle visiting all nodes once. (e) High Manhattan Distance task: find path exceeding training complexity. (f) Edge-to-edge navigation: find path between opposite edges of larger grid.}
+\label{fig:evaluation_tasks}
+\end{figure}
+
+\subsection{Generalisation Testing}
+
+\textbf{Grid Size Generalisation:} Models trained on 4×4 grids are tested on 3×3, 5×5, 6×6 and 7×7 grids to assess whether spatial understanding scales to different environment sizes. This reveals whether learned spatial representations are truly geometric or tied to specific grid dimensions.
+
+\textbf{Extended Loop Completion:} We test N×N square loops on larger grids, where N ranges from 3-7. This tests whether geometric reasoning transfers to novel spatial scales, revealing whether models learn general geometric principles or grid-specific patterns.
+
+\textbf{High Manhattan Distance Tasks (SP Models):} We evaluate shortest-path prediction on 5×5 grids where the start and goal nodes are separated by a Manhattan Distance (MD) of 7–8. The MD between two nodes with coordinates $(x_1, y_1)$ and $(x_2, y_2)$ is defined as:
+\begin{equation}
+\text{MD} = |x_1 - x_2| + |y_1 - y_2|
+\end{equation}
+On the 4×4 training grids, the maximum possible distance is MD=6 (a path between diagonally opposite corner nodes). This means the model never encountered paths requiring more than six steps during training. By testing on MD 7–8, we assess whether the model can plan longer routes than it has experienced before, effectively probing its ability to extend multi-step reasoning beyond the training horizon.
+
+\textbf{Edge-to-Edge Navigation (SP Models):} We also test shortest paths between nodes on opposite edges of the 5×5 grid. Unlike the high MD tasks, these paths never exceed the maximum MD seen during training ($\le 6$), so the total number of planning steps remains within the model’s experience. However, the paths require consecutive moves in the same direction that cannot fit on the 4×4 training grid, testing whether the model can generalise spatial strategies to larger environments while staying within its learned planning complexity.
+
+% \subsection{Performance Metrics}
+
+% \textbf{Strict Accuracy:} Binary measure requiring exact matches for valid predictions. A prediction is correct only if it represents a valid move given the current spatial state.
+
+% \textbf{Sequence Accuracy:} For multi-step generation, we require that entire sequences are valid (every step represents a legal move) and goal-directed (reaching the specified target).
+
+% \textbf{Partial Credit Metrics:} For path generation tasks, we measure both local validity rate (percentage of individual steps that are legal) and progress toward goal (reduction in distance to target over the sequence).
+
+\section{Representational Analysis Methods}
+
+\subsection{Principal Component Analysis}
+
+PCA identifies the principal directions of variation in high-dimensional neural representations. Given representations $\{h_i\}$ where $h_i \in \mathbb{R}^d$, we first center them by computing the mean $\bar{h} = \frac{1}{N} \sum_{i=1}^N h_i$, and then calculate the covariance matrix:
+\begin{equation}
+\mathbf{C} = \frac{1}{N} \sum_{i=1}^N (h_i - \bar{h})(h_i - \bar{h})^\top.
+\end{equation}
+The principal components are obtained as the eigenvectors $\mathbf{v}_k$ of $\mathbf{C}$ corresponding to the largest eigenvalues $\lambda_k$:
+\begin{equation}
+\mathbf{C} \mathbf{v}_k = \lambda_k \mathbf{v}_k.
+\end{equation}
+
+In this case, we extract hidden states from specific layers and token positions across many examples. When tokens appear multiple times in sequences (e.g., node tokens in long random walks), we may choose to average their representations within each sequence to isolate stable spatial encodings from positional effects. The resulting principal components can reveal whether models organise spatial information according to interpretable geometric dimensions, such as coordinate axes or spatial relationships. Clustering patterns in the reduced space indicate whether semantically related spatial concepts are represented similarly.
+
+
+\subsection{Linear Probing}
+
+Linear probing tests whether specific information can be decoded from neural representations using simple linear transformations. For hidden state $h_l \in \mathbb{R}^d$ at layer $l$, we train a linear function:
+\begin{equation}
+\hat{y} = Wh_l + b
+\end{equation}
+where $W \in \mathbb{R}^{k \times d}$ and $b \in \mathbb{R}^k$ for $k$-dimensional targets.
+
+Probes are trained on held-out data using cross-validation to prevent overfitting. For regression tasks (e.g., predicting spatial coordinates), we use $R^2$ scores, defined as:
+\begin{equation}
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\end{equation}
+where $y_i$ are the true values, $\hat{y}_i$ are the predicted values, and $\bar{y}$ is the mean of the true values. High performance indicates that target information is linearly accessible in the representation.
+
+\section{Mechanistic Analysis Methods}
+
+\subsection{Activation Patching}
+
+Activation patching tests causal relationships by replacing activations from one context with those from another. Given two input sequences $x^{(1)}$ (donor) and $x^{(2)}$ (recipient) that differ in specific ways, we replace activation $h_C^{(2)}$ from component $C$ in the recipient sequence with the corresponding activation $h_C^{(1)}$ from the donor sequence:
+\begin{equation}
+\mathbf{h}_i^{(l)} = \begin{cases}
+\mathbf{h}_{i,donor}^{(l)} & \text{if position } i \text{ is patched} \\
+\mathbf{h}_{i,recipient}^{(l)} & \text{otherwise}
+\end{cases}
+\end{equation}
+where the patched model processes the recipient sequence but uses donor activations at specified positions and layers.
+
+Effective patching usually requires minimal pairs—inputs that differ only in the aspect being tested. If patching successfully changes the model's output in the predicted direction, this provides causal evidence for the component's role in the computation. We can patch at different granularities: entire layers, attention blocks, MLP blocks, or individual attention heads.
+
+\subsection{Ablation Experiments}
+
+Ablation studies test necessity by systematically removing or zeroing components and measuring performance changes. We distinguish between two types of ablation:
+
+\textbf{Component Ablation:} Tests the necessity of specific network components by zeroing their activations. For a component $C$ at layer $l$, we modify the forward pass by replacing the component's output with zeros:
+\begin{equation}
+\mathbf{h}^{(l)} = \mathbf{h}^{(l-1)} + \begin{cases}
+\mathbf{0} & \text{if component } C \text{ is ablated} \\
+f_C(\mathbf{h}^{(l-1)}) & \text{otherwise}
+\end{cases}
+\end{equation}
+where $f_C$ represents the function computed by component $C$ (attention, MLP, or subcomponents). This includes layer-wise ablation (entire layers), attention head ablation, and MLP sublayer ablation.
+
+\textbf{Token Ablation:} Tests the necessity of specific input tokens by zeroing their hidden states at the input to each layer. For token positions $T$ to be ablated at layer $l$:
+\begin{equation}
+\mathbf{h}_i^{(l)} = \begin{cases}
+\mathbf{0} & \text{if } i \in T \\
+\mathbf{h}_i^{(l)} & \text{otherwise}
+\end{cases}
+\end{equation}
+This allows testing whether the model requires specific input information at different processing stages, revealing when information becomes redundant or when it is still necessary for downstream computations.
+
+We measure ablation effects using the same performance metrics as baseline evaluation. Large performance drops indicate that the ablated component or token is necessary for the behaviour. However, ablation only demonstrates necessity, not the specific computation performed by the component.
+
+\subsection{Attention Analysis}
+
+Attention weights reveal which tokens each position attends to during processing. We visualise attention patterns as matrices showing the attention distribution from each query position to all key positions. Head specialisation analysis examines whether individual attention heads perform consistent functions across examples. We look for heads that systematically attend to specific token types, positions, or semantic categories (e.g., start nodes, direction tokens, corner nodes etc.).
+
+\subsection{Similarity Metrics}
+
+For comparing neural representations across different conditions, we use cosine similarity as the primary metric. Given two vectors $\mathbf{u}$ and $\mathbf{v}$:
+
+\begin{equation}
+\text{cosine similarity} = \frac{\mathbf{u} \cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|} = \frac{\sum_{i=1}^{d} u_i v_i}{\sqrt{\sum_{i=1}^{d} u_i^2} \sqrt{\sum_{i=1}^{d} v_i^2}}
+\end{equation}
+
+This ranges from -1 (opposite directions) to 1 (identical directions), with 0 indicating orthogonal vectors. Cosine similarity captures directional similarity while being invariant to magnitude differences across layers or conditions, making it particularly useful for comparing neural representations that may have different activation scales.
+
+\section{Limitations and Caveats}
+
+Several important limitations apply to mechanistic interpretability methods. PCA only reveals linear structure in representations, potentially missing non-linear organisation. Linear probing only tests linear accessibility, not whether models actually use information in that format. Activation patching may miss distributed computations requiring coordination across multiple components. Representational analyses (PCA, probing) reveal correlational structure, while mechanistic analyses (patching, ablation) can establish causal relationships. Successful patching demonstrates sufficiency while successful ablation demonstrates necessity. Results may be specific to the particular architecture, training procedure, or task studied. Finding interpretable patterns does not guarantee understanding of the model's true computational strategy. Models may use computations that appear interpretable but serve different functions than assumed.
+
+% All interventions require appropriate controls. For patching experiments, we include controls patching from unrelated contexts or patching components that should not affect the behaviour of interest. Multiple trials establish reliability, and corrections for multiple comparisons control false discovery rates when testing many components.
+
+\section{Chapter Summary}
+
+This chapter establishes both the training framework and methodological toolkit for investigating spatial intelligence in transformers. The training framework compares two paradigms: exploratory learning through random walks (Foraging Model) versus goal-directed learning through shortest path planning (SP Models). This controlled comparison isolates the effects of training objectives on learned algorithms.
+
+The three-part analysis framework progresses from behavioural evaluation to representational analysis to mechanistic investigation. behavioural methods establish model capabilities and identify interesting phenomena. Representational methods reveal how spatial information is organised internally. Mechanistic methods use causal interventions to test hypotheses about computational processes.
+
+In subsequent chapters, we apply this toolkit to understand how different training paradigms produce different forms of spatial intelligence, moving from observable capabilities to internal mechanisms to establish how training objectives shape the algorithms that emerge.
