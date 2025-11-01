@@ -7,22 +7,17 @@
             margin: 0;
             height: 100%;
         }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: start; /* align top */
-            background: #f0f0f0; /* optional page background */
-        }
-        iframe {
-            width: 80%; /* adjust width as needed */
-            max-width: 1000px; /* optional max width */
+        object {
+            width: 80%;
+            max-width: 1000px;
             height: 100vh;
+            display: block;
+            margin: 0 auto;
             border: none;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
-    <iframe src="NeurIPS_CogInterp_2025__Camera_Ready.pdf"></iframe>
+    <object data="NeurIPS_CogInterp_2025__Camera_Ready.pdf" type="application/pdf"></object>
 </body>
 </html>
